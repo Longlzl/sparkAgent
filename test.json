@@ -1,0 +1,66 @@
+{
+        "header": {
+            "app_id": appid,
+            "uid": "1234"
+        },
+        "parameter": {
+
+            "chat": {
+                "domain": domain,
+                "random_threshold": 0.5,
+                "max_tokens": 2048,
+                "auditing": "default"
+            }
+        },
+        "payload": {
+            "message": {
+                "text": [
+                    {"role": "user", "content": ""} # 用户的提问
+                    ]
+            },
+            "functions": {
+                "text": [
+                    {
+                        "name": "天气查询",
+                        "description": "天气插件可以提供天气相关信息。你可以提供指定的地点信息、指定的时间点或者时间段信息，来精准检索到天气信息。",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "location": {
+                                    "type": "string",
+                                    "description": "地点，比如北京。"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "description": "日期。"
+                                }
+                            },
+                            "required": [
+                                "location"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "税率查询",
+                        "description": "税率查询可以查询某个地方的个人所得税率情况。你可以提供指定的地点信息、指定的时间点，精准检索到所得税率。",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "location": {
+                                    "type": "string",
+                                    "description": "地点，比如北京。"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "description": "日期。"
+                                }
+                            },
+                            "required": [
+                                "location"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
